@@ -25,7 +25,10 @@
               "apps/awesome-app/src/favicon.ico",
               "apps/awesome-app/src/assets"
             ],
-            "styles": ["apps/awesome-app/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "apps/awesome-app/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -84,7 +87,10 @@
               "apps/awesome-app/tsconfig.app.json",
               "apps/awesome-app/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/awesome-app/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/awesome-app/**"
+            ]
           }
         },
         "test": {
@@ -118,8 +124,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/awesome-app-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/awesome-app-e2e/**"]
+            "tsConfig": [
+              "apps/awesome-app-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/awesome-app-e2e/**"
+            ]
           }
         }
       }
