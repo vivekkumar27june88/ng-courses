@@ -1,0 +1,36 @@
+<form #loginForm="ngForm">
+  <mat-card class="login-container">
+
+    <div class="mat-icon-container">
+      <mat-icon class="user-icon">perm_identity</mat-icon>
+    </div>
+
+    <mat-form-field appearance="outline"
+                    class="w-full">
+      <mat-label>Email</mat-label>
+      <input matInput
+             name="email"
+             ngModel
+             placeholder="Email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    class="w-full">
+      <mat-label>Password</mat-label>
+      <input matInput
+             name="password"
+             type="password"
+             appearance="outline"
+             ngModel
+             placeholder="Password">
+    </mat-form-field>
+
+    <button mat-flat-button
+            type="submit"
+            (click)="submitLoginForm(loginForm)"
+            class="login-btn">Login</button>
+
+    <a routerLink="/landing/register"
+       class="link">Create new account</a>
+  </mat-card>
+</form>

@@ -1,0 +1,64 @@
+<form #registerForm="ngForm"
+      (ngSubmit)="registerFormSubmitHandler(registerForm)">
+  <mat-card class="login-container">
+
+    <div class="mat-icon-container">
+      <mat-icon class="user-icon">perm_identity</mat-icon>
+    </div>
+
+    <mat-form-field appearance="outline"
+                    class="w-full">
+      <mat-label>First Name</mat-label>
+      <input matInput
+             name="firstName"
+             ngModel
+             placeholder="First Name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    class="w-full">
+      <mat-label>Last Name</mat-label>
+      <input matInput
+             name="lastName"
+             ngModel
+             placeholder="Last Name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    class="w-full">
+      <mat-label>Email</mat-label>
+      <input matInput
+             name="email"
+             ngModel
+             placeholder="Email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    class="w-full">
+      <mat-label>Password</mat-label>
+      <input matInput
+             ngModel
+             name="password"
+             type="password"
+             appearance="outline"
+             placeholder="Password">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    class="w-full">
+      <mat-label>Retype Password</mat-label>
+      <input matInput
+             ngModel
+             appearance="outline"
+             name="repeatPassword"
+             type="password"
+             placeholder="Retype Password">
+    </mat-form-field>
+
+    <button mat-flat-button
+            class="login-btn">Register</button>
+
+    <a class="link"
+       routerLink="/landing/login">Already register, login here</a>
+  </mat-card>
+</form>
