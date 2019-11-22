@@ -1,1 +1,15 @@
-<p>landing works!</p>
+<div class="top-container">
+  <div class="left-container">
+    <a class="logo"
+       routerLink="/landing"><img src="/assets/images/logo.png"></a>
+  </div>
+
+  <div class="right-container">
+    <button mat-flat-button
+            class="login-btn"
+            (click)="loginBtnClickHandler()">Login</button>
+    <button mat-flat-button
+            class="register-btn"
+            (click)="registerBtnClickHandler()">Register</button>
+  </div>
+</div>

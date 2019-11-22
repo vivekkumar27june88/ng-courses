@@ -1,0 +1,51 @@
+@import '~@angular/material/theming';
+
+:host {
+  background-image: url('/assets/images/landing-2.jpg');
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+}
+
+.top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100vw;
+  padding: 1.5rem;
+
+  .left-container {
+    .logo {
+      justify-self: flex-start;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+
+      img {
+        width: 40px;
+        height: 40px;
+        display: block;
+      }
+    }
+  }
+
+  .right-container {
+    .login-btn {
+      text-transform: uppercase;
+      width: 150px;
+      height: 45px;
+      background-color: mat-color(mat-palette($mat-green), 800);
+      margin-right: 2rem;
+    }
+
+    .register-btn {
+      text-transform: uppercase;
+      width: 175px;
+      height: 45px;
+      background-color: mat-color(mat-palette($mat-pink), 400);
+    }
+  }
+}

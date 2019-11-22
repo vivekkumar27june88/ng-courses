@@ -1,0 +1,62 @@
+@import '~@angular/material/theming';
+
+:host {
+  background-image: url('/assets/images/landing-1.jpg');
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  min-width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mat-icon-container {
+  display: flex;
+  padding: 1rem;
+  border: 2px solid mat-color(mat-palette($mat-pink), 400);
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+  margin: 1rem;
+  align-self: center;
+}
+
+.user-icon {
+  line-height: 6rem;
+  width: 6rem !important;
+  height: 6rem !important;
+  font-size: 6rem;
+  color: mat-color(mat-palette($mat-pink), 400);
+}
+
+.login-btn {
+  background-color: mat-color(mat-palette($mat-amber), 200);
+  background-color: mat-color(mat-palette($mat-pink), 400);
+  color: rgba($color: #000000, $alpha: 0.7);
+  height: 3rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  outline: none;
+}
+
+.link {
+  font-size: 0.8rem;
+  color: mat-color(mat-palette($mat-blue), 400);
+  align-self: flex-end;
+  padding-top: 1rem;
+}

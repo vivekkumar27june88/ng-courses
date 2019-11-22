@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ng-courses-landing',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  public loginBtnClickHandler(): void {
+    this.router.navigate(['/landing', 'login']);
+  }
+
+  public registerBtnClickHandler(): void {
+    this.router.navigate(['/landing', 'register']);
+  }
 }
