@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
             'accessToken',
             loginSucRes['accessToken']
           );
+          this.router.navigate(['/movies']);
         },
         loginErrRes => {
           console.log({ loginErrRes });
