@@ -1,0 +1,22 @@
+<div class="nav-container">
+  <a class="featured-movies nav"
+     [routerLink]="['/movies/featured-movies']"
+     routerLinkActive="movies-active-nav">Featured</a>
+  <!-- <a class='featured-movies nav'
+     (click)="openInSecondaryOutlet()">Featured</a> -->
+  <a class="popular-movies nav"
+     routerLink="/movies/popular-movies"
+     routerLinkActive="movies-active-nav">Popular</a>
+  <a class="search-movies nav"
+     routerLink="/movies/search-movies"
+     routerLinkActive="movies-active-nav">Search</a>
+</div>
+
+<div class="router-outlet-container">
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="movie-details-container">
+    <router-outlet name="details"></router-outlet>
+  </div>
+</div>

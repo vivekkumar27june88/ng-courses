@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 body {
   font-size: 16px;
 }
@@ -20,5 +22,10 @@ body {
 }
 
 .active-menu {
-  font-weight: bold;
+  font-weight: 500;
+  color: mat-color(mat-palette($mat-amber), 700);
+}
+
+button {
+  outline: none !important;
 }

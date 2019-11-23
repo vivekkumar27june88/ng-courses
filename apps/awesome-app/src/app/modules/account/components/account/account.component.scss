@@ -1,0 +1,31 @@
+@import '~@angular/material/theming';
+
+.account-active-nav {
+  border-bottom: 2px solid mat-color(mat-palette($mat-amber), 800);
+  font-weight: 700;
+  color: mat-color(mat-palette($mat-amber), 800);
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid mat-color(mat-palette($mat-grey), 300);
+
+  .nav {
+    padding: 0.75rem 1rem;
+    min-width: 150px;
+    text-align: center;
+  }
+
+  .account {
+  }
+
+  .department {
+  }
+
+  .user {
+  }
+}
