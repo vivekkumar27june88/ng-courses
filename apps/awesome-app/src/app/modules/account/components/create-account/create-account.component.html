@@ -1,0 +1,39 @@
+<mat-card class="create-account-card">
+  <form #createAccountForm="ngForm">
+
+    <div class="header">
+      <span>Create a New Account</span>
+    </div>
+
+    <!-- Account Name -->
+    <mat-form-field appearance="outline">
+      <mat-label>Account Name</mat-label>
+      <input matInput
+             type="text"
+             name="accountName"
+             ngModel
+             required>
+    </mat-form-field>
+
+    <!-- Account Manager email -->
+    <mat-form-field appearance="outline">
+      <mat-label>Account Manager Email Id</mat-label>
+      <input matInput
+             type="email"
+             name="accountManager"
+             ngModel
+             required>
+    </mat-form-field>
+
+    <!-- Create Account button -->
+    <button mat-flat-button
+            color="accent"
+            type="submit">
+      <div class="icon-label-button">
+        <span>Create Account</span>
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+    </button>
+
+  </form>
+</mat-card>

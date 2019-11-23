@@ -1,0 +1,40 @@
+:host {
+  display: grid;
+  place-content: center;
+  min-height: 100%;
+}
+
+.create-account-card {
+  width: 400px;
+
+  form {
+    place-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fill, minmax(auto, auto));
+  }
+}
+
+.header {
+  min-height: 80px;
+  display: grid;
+  place-content: center;
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+}
+
+.icon-label-button {
+  display: grid;
+  grid-template-columns: 1fr 30px;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    display: inline-block;
+    padding-right: 1rem;
+    text-transform: uppercase;
+  }
+}

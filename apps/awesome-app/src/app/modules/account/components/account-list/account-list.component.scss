@@ -1,0 +1,12 @@
+.action-buttons {
+  display: grid;
+  justify-content: end;
+  padding: 1rem;
+}
+
+.icon-label-button {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  justify-content: space-between;
+  align-items: center;
+}
