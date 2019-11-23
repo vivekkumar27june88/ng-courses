@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { MainframeComponent } from './components/mainframe/mainframe.component';
 import { AuthGuard } from './modules/landing/services/auth.guard';
 
@@ -17,6 +17,7 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
+        canLoad: [AuthGuard],
         loadChildren: () =>
           import('./modules/account/account.module').then(
             mod => mod.AccountModule
@@ -44,7 +45,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, /* { preloadingStrategy: PreloadAllModules } */)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
