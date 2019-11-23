@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  CanLoad,
+  Route,
   Router,
   RouterStateSnapshot,
+  UrlSegment,
   UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -11,7 +14,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanLoad {
   constructor(private router: Router) {}
 
   canActivate(
@@ -23,7 +26,18 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     const accessToken = window.sessionStorage.getItem('accessToken');
-    console.log('TCL: AuthGuard -> constructor -> accessToken', accessToken);
+    if (!accessToken) {
+      this.router.navigate(['/landing']);
+      return false;
+    }
+    return true;
+  }
+
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
+  ): boolean | Observable<boolean> | Promise<boolean> {
+    const accessToken = window.sessionStorage.getItem('accessToken');
     if (!accessToken) {
       this.router.navigate(['/landing']);
       return false;
