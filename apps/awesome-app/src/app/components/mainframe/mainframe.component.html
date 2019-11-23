@@ -1,0 +1,22 @@
+<div class="example-container"
+     [class.example-is-mobile]="mobileQuery.matches">
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav
+                 [opened]="'true'"
+                 [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches"
+                 fixedTopGap="56">
+      <ng-courses-sidebar></ng-courses-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <ng-courses-header (menuIconClickEvent)="snav.toggle()"></ng-courses-header>
+      <ng-courses-main-content></ng-courses-main-content>
+      <ng-courses-footer></ng-courses-footer>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>

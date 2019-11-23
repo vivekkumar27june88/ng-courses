@@ -1,0 +1,51 @@
+@import '~@angular/material/theming';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.branding {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  background-color: mat-color(mat-palette($mat-grey, 100));
+  align-items: center;
+
+  .logo {
+    align-self: center;
+    justify-self: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+
+    img {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+  }
+
+  .app-name {
+    font-weight: 500;
+    font-size: 1.25rem;
+    padding: 1.07rem;
+  }
+}
+
+.menu-items-container {
+  .menu-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    padding: 1rem;
+
+    &__icon {
+    }
+
+    &__label {
+    }
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid mat-color(mat-palette($mat-grey, 300));
+    }
+  }
+}

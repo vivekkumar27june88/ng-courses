@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MainframeComponent } from './components/mainframe/mainframe.component';
 
 const routes: Routes = [
   {
@@ -9,8 +10,13 @@ const routes: Routes = [
       import('./modules/landing/landing.module').then(mod => mod.LandingModule)
   },
   {
+    path: 'home',
+    component: MainframeComponent,
+    pathMatch: 'full'
+  },
+  {
     path: '',
-    redirectTo: '',
+    redirectTo: 'landing',
     pathMatch: 'full'
   },
   {

@@ -1,0 +1,6 @@
+@import '~@angular/material/theming';
+
+:host {
+  background-color: mat-color(mat-palette($mat-grey), 50);
+  height: 50px;
+}
