@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MainframeComponent } from './components/mainframe/mainframe.component';
 import { AuthGuard } from './modules/landing/services/auth.guard';
+import { CustomPreloadingStrategyService } from './services/custom-preloading-strategy.service';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
       },
       {
         path: 'account',
+        data: { preload: true },
         loadChildren: () =>
           import('./modules/account/account.module').then(
             mod => mod.AccountModule
@@ -46,7 +48,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, /* { preloadingStrategy: PreloadAllModules } */)
+    RouterModule.forRoot(
+      routes,
+      /* { preloadingStrategy: PreloadAllModules } */ {
+        preloadingStrategy: CustomPreloadingStrategyService
+      }
+    )
   ],
   exports: [RouterModule]
 })
