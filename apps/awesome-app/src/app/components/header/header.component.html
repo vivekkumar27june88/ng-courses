@@ -1,0 +1,24 @@
+<mat-toolbar class="toolbar">
+  <button mat-icon-button
+          (click)="menuIconClickHandler()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="spacer"></div>
+
+  <button mat-icon-button
+          [matMenuTriggerFor]="appProfile">
+    <mat-icon>perm_identity</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu #appProfile="matMenu">
+  <div class="app-menu-item-container">
+    <button mat-menu-item
+            class="item"
+            (click)="logoutBtnClickHandler()">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>Logout</span>
+    </button>
+  </div>
+</mat-menu>

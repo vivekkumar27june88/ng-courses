@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+.toolbar {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+}
+
+.app-menu-item-container {
+  display: grid;
+  grid-template-rows: 1fr;
+  padding: 0.5rem;
+}
+
+.item {
+  outline: none;
+}

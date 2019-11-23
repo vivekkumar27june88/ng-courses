@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MainframeComponent } from './components/mainframe/mainframe.component';
 
 const routes: Routes = [
   {
@@ -10,8 +11,28 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '',
-    pathMatch: 'full'
+    component: MainframeComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./modules/account/account.module').then(
+            mod => mod.AccountModule
+          )
+      },
+      {
+        path: 'account',
+        loadChildren: () =>
+          import('./modules/account/account.module').then(
+            mod => mod.AccountModule
+          )
+      },
+      {
+        path: 'movies',
+        loadChildren: () =>
+          import('./modules/movies/movies.module').then(mod => mod.MoviesModule)
+      }
+    ]
   },
   {
     path: '**',
