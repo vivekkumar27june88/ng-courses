@@ -10,14 +10,29 @@ const routes: Routes = [
       import('./modules/landing/landing.module').then(mod => mod.LandingModule)
   },
   {
-    path: 'home',
-    component: MainframeComponent,
-    pathMatch: 'full'
-  },
-  {
     path: '',
-    redirectTo: 'landing',
-    pathMatch: 'full'
+    component: MainframeComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./modules/account/account.module').then(
+            mod => mod.AccountModule
+          )
+      },
+      {
+        path: 'account',
+        loadChildren: () =>
+          import('./modules/account/account.module').then(
+            mod => mod.AccountModule
+          )
+      },
+      {
+        path: 'movies',
+        loadChildren: () =>
+          import('./modules/movies/movies.module').then(mod => mod.MoviesModule)
+      }
+    ]
   },
   {
     path: '**',
