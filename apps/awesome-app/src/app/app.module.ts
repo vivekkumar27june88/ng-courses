@@ -10,6 +10,8 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { MainframeComponent } from './components/mainframe/mainframe.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MaterialModuleImportModule } from './modules';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   imports: [
@@ -17,7 +19,14 @@ import { MaterialModuleImportModule } from './modules';
     BrowserAnimationsModule,
     MaterialModuleImportModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    })
   ],
   declarations: [
     AppComponent,
