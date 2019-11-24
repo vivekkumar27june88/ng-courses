@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromAuth from './reducers';
+import { authReducer } from './reducers';
 
 @NgModule({
   declarations: [LandingComponent, LoginComponent, RegisterComponent],
@@ -18,9 +19,12 @@ import * as fromAuth from './reducers';
     MaterialModuleImportModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducers, {
+    StoreModule.forFeature(
+      fromAuth.authFeatureKey /* fromAuth.reducers, {
       metaReducers: fromAuth.metaReducers
-    })
+    } */,
+      authReducer
+    )
   ],
   exports: [LandingComponent]
 })

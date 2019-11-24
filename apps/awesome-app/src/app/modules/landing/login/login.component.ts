@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as jwtDecode from 'jwt-decode';
+import { AppState } from '../../../reducers';
+import { IUser } from '../models';
+import * as AuthActions from '../reducers/auth.actions';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'ng-courses-login',
@@ -9,7 +14,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit() {}
 
@@ -25,6 +34,15 @@ export class LoginComponent implements OnInit {
             'accessToken',
             loginSucRes['accessToken']
           );
+
+          const decodedToken = jwtDecode(loginSucRes['accessToken']);
+          const user: IUser = {
+            email: decodedToken['email'],
+            firstName: decodedToken['firstName'],
+            lastName: decodedToken['lastName']
+          } as IUser;
+          this.store.dispatch(AuthActions.login({ user }));
+
           this.router.navigate(['/movies']);
         },
         loginErrRes => {
