@@ -16,6 +16,7 @@ import { LandingModule, MaterialModuleImportModule } from './modules';
 import { metaReducers, reducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   imports: [
@@ -36,7 +37,10 @@ import { AppEffects } from './app.effects';
     }),
     EffectsModule.forRoot([AppEffects]),
     LandingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router'
+    })
   ],
   declarations: [
     AppComponent,
