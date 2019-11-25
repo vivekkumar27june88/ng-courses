@@ -12,10 +12,10 @@ export function customLoggerMetaReducer(
   reducer: ActionReducer<any>
 ): ActionReducer<any> {
   return (state, action) => {
-    console.log({
+    /* console.log({
       state,
       action
-    });
+    }); */
 
     return reducer(state, action);
   };
