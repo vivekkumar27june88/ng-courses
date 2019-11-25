@@ -21,6 +21,21 @@ export class CoursesEffects {
     );
   });
 
+  createCourses$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(CoursesActions.createCourse),
+      concatMap(action => this.courseService.createNewCourse(action.course)),
+      map(course =>
+        CoursesActions.createCourseSuccess({
+          course: course['newCourse'] as CoursesEntity
+        })
+      ),
+      catchError(createError =>
+        of(CoursesActions.createCourseFailure({ createError }))
+      )
+    );
+  });
+
   constructor(
     private actions$: Actions,
     private courseService: CourseService

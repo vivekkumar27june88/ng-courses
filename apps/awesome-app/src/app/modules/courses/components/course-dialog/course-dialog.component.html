@@ -1,0 +1,69 @@
+<div class="course-dialog-container">
+  <form #courseForm="ngForm"
+        (ngSubmit)="submitCourse(courseForm)">
+
+    <div class="header">
+      <div class="title">{{data?.mode === 'create' ? 'Create Course' : 'Update Course'}}</div>
+      <mat-icon (click)="closeDialog()">close</mat-icon>
+    </div>
+
+    <div class="content">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Course Name</mat-label>
+        <input matInput
+               type="text"
+               name="name"
+               ngModel>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Trainer</mat-label>
+        <input matInput
+               type="text"
+               name="trainer"
+               ngModel>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Duration</mat-label>
+        <input matInput
+               type="text"
+               name="duration"
+               ngModel>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Level</mat-label>
+        <input matInput
+               type="text"
+               name="level"
+               ngModel>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Rating</mat-label>
+        <input matInput
+               type="number"
+               name="rating"
+               ngModel>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Course Image</mat-label>
+        <input matInput
+               type="text"
+               name="courseImg"
+               ngModel>
+      </mat-form-field>
+
+    </div>
+
+    <div class="footer">
+      <button mat-flat-button
+              class="submit-btn"
+              type="submit"
+              color="accent">{{data?.mode === 'create' ? 'Create Course' : 'Update Course'}}</button>
+    </div>
+  </form>
+</div>
