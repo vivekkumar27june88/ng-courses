@@ -9,6 +9,8 @@ export interface State extends EntityState<CoursesEntity> {
   selectedId?: string | number; // which Courses record has been selected
   loaded: boolean; // has the Courses list been loaded
   error?: string | null; // last none error (if any)
+  created: boolean; // has the Courses list been loaded
+  createError?: string | null; // last none error (if any)
 }
 
 export interface CoursesPartialState {
@@ -21,7 +23,9 @@ export const coursesAdapter: EntityAdapter<CoursesEntity> = createEntityAdapter<
 
 export const initialState: State = coursesAdapter.getInitialState({
   // set initial required properties
-  loaded: false
+  loaded: false,
+  created: false,
+  createError: null
 });
 
 const coursesReducer = createReducer(
@@ -30,7 +34,9 @@ const coursesReducer = createReducer(
   on(CoursesActions.loadCourses, state => ({
     ...state,
     loaded: false,
-    error: null
+    created: false,
+    error: null,
+    createError: null
   })),
 
   on(CoursesActions.loadCoursesSuccess, (state, { courses }) =>
@@ -40,6 +46,21 @@ const coursesReducer = createReducer(
   on(CoursesActions.loadCoursesFailure, (state, { error }) => ({
     ...state,
     error
+  })),
+
+  on(CoursesActions.createCourse, state => ({
+    ...state,
+    created: false,
+    createError: null
+  })),
+
+  on(CoursesActions.createCourseSuccess, (state, { course }) =>
+    coursesAdapter.addOne(course, { ...state, created: true })
+  ),
+
+  on(CoursesActions.createCourseFailure, (state, { createError }) => ({
+    ...state,
+    createError
   }))
 );
 
