@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { MainframeComponent } from './components/mainframe/mainframe.component';
-import { AuthGuard } from './modules/landing/services/auth.guard';
-import { CustomPreloadingStrategyService } from './services/custom-preloading-strategy.service';
+import { LandingComponent } from './modules/landing/landing/landing.component';
 import { LoginComponent } from './modules/landing/login/login.component';
 import { RegisterComponent } from './modules/landing/register/register.component';
-import { LandingComponent } from './modules/landing/landing/landing.component';
+import { AuthGuard } from './modules/landing/services/auth.guard';
 
 const routes: Routes = [
   /* {
@@ -55,6 +54,13 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         loadChildren: () =>
           import('./modules/movies/movies.module').then(mod => mod.MoviesModule)
+      },
+      {
+        path: 'courses',
+        loadChildren: () =>
+          import('./modules/courses/courses.module').then(
+            mod => mod.CoursesModule
+          )
       }
     ]
   }

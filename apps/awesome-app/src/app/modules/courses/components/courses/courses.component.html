@@ -1,0 +1,32 @@
+<div class="toolbar">
+  <button mat-flat-button color="primary">Create Course</button>
+  <!-- <button mat-flat-button color="warn">Delete Course</button> -->
+</div>
+
+<div class="course-container">
+  <div class="course"
+       *ngFor="let course of coursesEntities$ | async">
+    <div class="course__header">{{course.name}}</div>
+    <div class="course__logo">
+      <img [src]="course.courseImg">
+    </div>
+    <div class="course__info">
+      <div class="info course__info__trainer">
+        <div class="info__key">Trainer</div>
+        <div class="info__value">{{course.trainer}}</div>
+      </div>
+      <div class="info course__info__duration">
+        <div class="info__key">Duration</div>
+        <div class="info__value">{{course.duration}}</div>
+      </div>
+      <div class="info course__info__level">
+        <div class="info__key">Level</div>
+        <div class="info__value">{{course.level}}</div>
+      </div>
+      <div class="info course__info__rating">
+        <div class="info__key">Rating</div>
+        <div class="info__value">{{course.rating}}</div>
+      </div>
+    </div>
+  </div>
+</div>

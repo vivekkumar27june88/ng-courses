@@ -17,6 +17,7 @@ import { metaReducers, reducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { CoursesModule } from './modules/courses/courses.module';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     AppRoutingModule,
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router'
-    })
+    }),
+    CoursesModule
   ],
   declarations: [
     AppComponent,

@@ -1,0 +1,87 @@
+@import '~@angular/material/theming';
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  background-color: mat-color(mat-palette($mat-amber, 50));
+
+  > * {
+    margin-right: 1rem;
+  }
+}
+
+.course-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  grid-gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  justify-content: space-evenly;
+
+  .course {
+    @include mat-elevation-transition;
+    @include mat-elevation(4);
+    border-radius: 0.25rem;
+    width: 300px;
+
+    &__header {
+      font-size: 1.25rem;
+      font-weight: 500;
+      padding: 0.75rem 1rem;
+    }
+
+    &__logo {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+
+    &__trainer {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    &__info {
+      display: grid;
+      align-content: center;
+      width: 100%;
+      margin-top: 2rem;
+
+      .info {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        padding: 0.25rem;
+
+        &__key {
+          font-weight: 500;
+          justify-self: end;
+          padding-right: 1rem;
+        }
+
+        &__value {
+          font-weight: 300;
+          font-size: 1.1rem;
+        }
+      }
+
+      &__trainer {
+      }
+
+      &__duration {
+      }
+
+      &__level {
+      }
+
+      &__rating {
+      }
+    }
+  }
+}
