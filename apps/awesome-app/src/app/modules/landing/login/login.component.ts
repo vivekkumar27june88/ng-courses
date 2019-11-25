@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import * as jwtDecode from 'jwt-decode';
+import { Subscription } from 'rxjs';
+import { skip } from 'rxjs/operators';
 import { AppState } from '../../../reducers';
-import { IUser } from '../models';
 import * as AuthActions from '../reducers/auth.actions';
+import * as AuthSelectors from '../reducers/auth.selectors';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -13,17 +14,52 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  public loginErr = '';
+  private subscriptions: Subscription = null;
+
   constructor(
     private authService: AuthService,
     private router: Router,
     private store: Store<AppState>
-  ) {}
+  ) {
+    this.subscriptions = new Subscription();
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.subscriptions.add(
+      this.store.select(AuthSelectors.loginErr).subscribe(loginErr => {
+        this.loginErr = loginErr;
+      })
+    );
+
+    this.subscriptions.add(
+      this.store
+        .select(AuthSelectors.userProfile)
+        .pipe(skip(1))
+        .subscribe(userProfile => {
+          console.log({ userProfile });
+          this.router.navigate(['/movies']);
+        })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
+  }
 
   submitLoginForm(loginForm: NgForm) {
-    this.authService
+    console.log('submit');
+    this.store.dispatch(
+      AuthActions.startLogin({
+        user: {
+          email: loginForm.value.email,
+          password: loginForm.value.password
+        }
+      })
+    );
+
+    /* this.authService
       .login({
         email: loginForm.value.email,
         password: loginForm.value.password
@@ -48,6 +84,6 @@ export class LoginComponent implements OnInit {
         loginErrRes => {
           console.log({ loginErrRes });
         }
-      );
+      ); */
   }
 }

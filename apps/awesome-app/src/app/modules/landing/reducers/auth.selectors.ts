@@ -9,3 +9,13 @@ export const isLoggedIn = createSelector(
   authStateSelector,
   auth => !!auth.user
 );
+
+export const loginErr = createSelector(
+  authStateSelector,
+  auth => auth.loginErr
+);
+
+export const userProfile = createSelector(
+  authStateSelector,
+  auth => auth.user
+);

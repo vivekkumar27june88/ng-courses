@@ -7,22 +7,42 @@ export const authFeatureKey = 'auth';
 
 export interface AuthState {
   user: IUser;
+  loginErr: string;
 }
 
 const initialState: AuthState = {
-  user: undefined
+  user: undefined,
+  loginErr: ''
 };
 
 export const authReducer = createReducer(
   initialState,
-  on(AuthActions.login, (state, action) => {
+  on(AuthActions.startLogin, (state, action) => {
     return {
-      user: action.user
+      user: undefined,
+      loginErr: ''
     };
   }),
+
+  on(AuthActions.loginCompleted, (state, action) => {
+    return {
+      user: action.user,
+      loginErr: ''
+    };
+  }),
+
+  on(AuthActions.loginError, (state, action) => {
+    return {
+      user: undefined,
+      loginErr: action.msg
+    };
+  }),
+
   on(AuthActions.logout, (state, action) => {
     return {
-      user: undefined
+      user: undefined,
+      loading: false,
+      loginErr: ''
     };
   })
 );

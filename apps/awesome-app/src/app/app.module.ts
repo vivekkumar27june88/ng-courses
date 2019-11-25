@@ -14,13 +14,14 @@ import { MainframeComponent } from './components/mainframe/mainframe.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LandingModule, MaterialModuleImportModule } from './modules';
 import { metaReducers, reducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModuleImportModule,
-    AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
@@ -33,7 +34,9 @@ import { metaReducers, reducers } from './reducers';
       maxAge: 25,
       logOnly: environment.production
     }),
-    LandingModule
+    EffectsModule.forRoot([AppEffects]),
+    LandingModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
