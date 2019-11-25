@@ -5,20 +5,20 @@ import { AuthGuard } from './modules/landing/services/auth.guard';
 import { CustomPreloadingStrategyService } from './services/custom-preloading-strategy.service';
 
 const routes: Routes = [
-  {
+  /* {
     path: 'landing',
     // loadChildren: './modules/landing/landing.module#LandingModule'
     loadChildren: () =>
       import('./modules/landing/landing.module').then(mod => mod.LandingModule)
-  },
+  }, */
   {
     path: '',
     component: MainframeComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: 'dashboard',
-        canLoad: [AuthGuard],
+        // canLoad: [AuthGuard],
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./modules/account/account.module').then(
             mod => mod.AccountModule
@@ -27,6 +27,7 @@ const routes: Routes = [
       {
         path: 'account',
         data: { preload: true },
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./modules/account/account.module').then(
             mod => mod.AccountModule
@@ -34,16 +35,17 @@ const routes: Routes = [
       },
       {
         path: 'movies',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./modules/movies/movies.module').then(mod => mod.MoviesModule)
       }
     ]
   },
-  {
+  /* {
     path: '**',
-    redirectTo: '/landing',
+    redirectTo: 'landing',
     pathMatch: 'full'
-  }
+  } */
 ];
 
 @NgModule({

@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../reducers';
+import * as AuthActions from '../../modules/landing/reducers/auth.actions';
 
 @Component({
   selector: 'ng-courses-header',
@@ -9,7 +12,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   @Output() menuIconClickEvent: EventEmitter<any>;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private store: Store<AppState>) {
     this.menuIconClickEvent = new EventEmitter<any>();
   }
 
@@ -22,6 +25,7 @@ export class HeaderComponent implements OnInit {
 
   public logoutBtnClickHandler(): void {
     window.sessionStorage.setItem('accessToken', '');
-    this.router.navigate(['/login']);
+    this.store.dispatch(AuthActions.logout());
+    this.router.navigate(['/landing/login']);
   }
 }
