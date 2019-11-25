@@ -4,3 +4,8 @@ export interface IUser {
   email: string;
   avatar: string;
 }
+
+export interface ILoginData {
+  email: string;
+  password: string;
+}

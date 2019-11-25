@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { MainframeComponent } from './components/mainframe/mainframe.component';
 import { AuthGuard } from './modules/landing/services/auth.guard';
 import { CustomPreloadingStrategyService } from './services/custom-preloading-strategy.service';
+import { LoginComponent } from './modules/landing/login/login.component';
+import { RegisterComponent } from './modules/landing/register/register.component';
+import { LandingComponent } from './modules/landing/landing/landing.component';
 
 const routes: Routes = [
   /* {
@@ -11,6 +14,20 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/landing/landing.module').then(mod => mod.LandingModule)
   }, */
+  {
+    path: 'landing/login',
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'landing/register',
+    component: RegisterComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'landing',
+    component: LandingComponent
+  },
   {
     path: '',
     component: MainframeComponent,
@@ -40,7 +57,7 @@ const routes: Routes = [
           import('./modules/movies/movies.module').then(mod => mod.MoviesModule)
       }
     ]
-  },
+  }
   /* {
     path: '**',
     redirectTo: 'landing',
@@ -52,9 +69,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(
       routes,
-      /* { preloadingStrategy: PreloadAllModules } */ {
-        preloadingStrategy: CustomPreloadingStrategyService
-      }
+      { preloadingStrategy: PreloadAllModules }
+      /* {preloadingStrategy: CustomPreloadingStrategyService} */
     )
   ],
   exports: [RouterModule]

@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromAuth from './reducers';
 import { authReducer } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './reducers/auth.effects';
 
 @NgModule({
   declarations: [LandingComponent, LoginComponent, RegisterComponent],
@@ -24,7 +26,8 @@ import { authReducer } from './reducers';
       metaReducers: fromAuth.metaReducers
     } */,
       authReducer
-    )
+    ),
+    EffectsModule.forFeature([AuthEffects])
   ],
   exports: [LandingComponent]
 })

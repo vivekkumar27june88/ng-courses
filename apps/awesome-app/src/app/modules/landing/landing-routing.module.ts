@@ -5,13 +5,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {
-    path: 'landing/login',
+  /* {
+    path: 'login',
     component: LoginComponent,
     pathMatch: 'full'
   },
   {
-    path: 'landing/register',
+    path: 'register',
     component: RegisterComponent,
     pathMatch: 'full'
   },
@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'landing',
     component: LandingComponent,
     pathMatch: 'full'
-  }
+  } */
 ];
 
 @NgModule({
